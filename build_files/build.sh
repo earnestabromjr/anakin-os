@@ -10,7 +10,31 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y tmux ripgrep fd-find fzf zoxide bat lsd virt-manager gcc rust cargo unzip
+dnf5 install -y 
+tmux \ 
+ripgrep \ 
+fd-find \ 
+fzf \ 
+zoxide \ 
+bat \ 
+lsd \ 
+virt-manager \ 
+gcc \ 
+rust \ 
+cargo \ 
+unzip \
+libvirt-daemon-driver-network \
+libvirt-daemon-driver-nodedev \
+libvirt-daemon-driver-qemu \
+libvirt-daemon-driver-storage-core \
+qemu-audio-spice \
+qemu-char-spice \
+qemu-device-display-qxl \
+qemu-device-display-virtio-gpu \
+qemu-device-display-virtio-vga \
+qemu-device-usb-redirect \
+qemu-system-x86-core
+
 
 # Use a COPR Example:
 #
@@ -22,3 +46,7 @@ dnf5 install -y tmux ripgrep fd-find fzf zoxide bat lsd virt-manager gcc rust ca
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
+pkexec sh -c '
+systemctl --now enable virtnetworkd.service
+systemctl --now enable virtqemud.service
+'
