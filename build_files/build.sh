@@ -10,8 +10,15 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install tmux ripgrep fd-find fzf zoxide bat lsd virt-manager gcc rust cargo unzip libvirt-daemon-driver-nodedev libvirt-daemon-driver-qemu libvirt-daemon-driver-storage-core qemu-audio-spice qemu-char-spice emu-device-display-qxl qemu-device-display-virtio-gpu qemu-device-display-virtio-vga qemu-device-usb-redirect qemu-system-x86-core -y 
-
+dnf5 install -y --skip-installed \
+    ripgrep \
+    fd-find \
+    zoxide \
+    bat \
+    lsd \
+    rust \
+    cargo \
+    qemu-device-display-qxl
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging
